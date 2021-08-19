@@ -1,40 +1,40 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
 const LessonSchema = new mongoose.Schema({
   title: String,
   content: String,
-  resource_url: String
-})
-const Lesson = mongoose.model('Lesson', LessonSchema)
+  resource_url: String,
+});
+const Lesson = mongoose.model("Lesson", LessonSchema);
 const CourseSchema = new mongoose.Schema({
   name: {
     type: String,
     trim: true,
-    required: 'Name is required'
+    required: "Name is required",
   },
   image: {
     data: Buffer,
-    contentType: String
+    contentType: String,
   },
   description: {
     type: String,
-    trim: true
+    trim: true,
   },
   category: {
     type: String,
-    required: 'Category is required'
+    required: "Category is required",
   },
   updated: Date,
   created: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
-  instructor: {type: mongoose.Schema.ObjectId, ref: 'User'},
+  instructor: { type: mongoose.Schema.ObjectId, ref: "User" },
   published: {
     type: Boolean,
-    default: false
+    default: false,
   },
-  lessons: [LessonSchema]
-})
+  lessons: [LessonSchema],
+});
 
-export default mongoose.model('Course', CourseSchema)
+export default mongoose.model("Course", CourseSchema);
